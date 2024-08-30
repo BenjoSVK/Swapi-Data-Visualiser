@@ -12,11 +12,13 @@ const customTheme = extendTheme({
       primary: "#ffffff",
       secondary: "#f0f0f0",
       text: "#000000",
+      button: "#191b1d",
     },
     dark: {
       primary: "#1a202c",
       secondary: "#2d3748",
       text: "#ffffff",
+      button: "#191b1d",
     },
   },
   fonts: {
@@ -57,13 +59,52 @@ const customTheme = extendTheme({
       variants: {
         solid: (props: any) => ({
           bg: props.colorMode === "light" ? "gray.100" : "gray.900",
-          color: props.colorMode === "light" ? "light.text" : "dark.text",
+          color: props.colorMode === "light" ? "light.button" : "dark.text",
+        }),
+        navbarButton: (props: any) => ({
+          mx: 1,
+          borderRadius: 50,
+          bg: "none",
+          fontWeight: 500,
+          letterSpacing: 0.5,
+          color: props.colorMode === "light" ? "gray.500" : "gray.300",
+          _hover: {
+            transform: "scale(1.1)",
+            color: props.colorMode === "light" ? "light.button" : "gray.100",
+          },
+          _active: {
+            transform: "scale(0.9)",
+          },
         }),
         pagination: (props: any) => ({
           bg: "none",
-          color: props.colorMode === "light" ? "dark.primary" : "light.primary",
+          textDecoration: "none",
+          color: "gray.500",
           _hover: {
-            bg: props.colorMode === "light" ? "gray.50" : "gray.700",
+            transform: "scale(1.1)",
+            color:
+              props.colorMode === "light" ? "light.button" : "light.primary",
+          },
+          _active: {
+            transform: "scale(0.9)",
+          },
+        }),
+        DrawerBtn: (props: any) => ({
+          fontWeight: 500,
+          _hover: { transform: "scale(1.1)" },
+        }),
+        HamburgerBtn: (props: any) => ({
+          bg: "none",
+          mr: 2,
+          color: props.colorMode === "light" ? "gray.600" : "gray.200",
+          _hover: {
+            transform: "scale(1.1)",
+            transition: "transform 0.3s",
+            color: props.colorMode === "light" ? "light.button" : "gray.100",
+          },
+          _active: {
+            transform: "scale(0.9)",
+            transition: "transform 0.2s",
           },
         }),
       },
@@ -82,7 +123,7 @@ const customTheme = extendTheme({
             props.colorMode === "light" ? "dark.secondary" : "light.secondary",
         },
         footer: {
-          bg: props.colorMode === "light" ? "light.primary" : "dark.primary",
+          bg: props.colorMode === "light" ? "gray.50" : "dark.primary",
           color:
             props.colorMode === "light" ? "dark.secondary" : "light.secondary",
         },
@@ -101,7 +142,7 @@ const customTheme = extendTheme({
           footer: {
             display: "flex",
             flexDirection: "column",
-            alignItems: "center", 
+            alignItems: "center",
             justifyContent: "center",
             px: 5,
             pt: 2,
@@ -113,11 +154,12 @@ const customTheme = extendTheme({
             bg: props.colorMode === "light" ? "gray.100" : "blue.800",
             boxShadow: "xl",
             maxwidth: "xs",
-            borderRadius: "xl",
+            borderRadius: "lg",
+            transform: "0.4s ease-in-out",
+            transition: "transform 0.4s",
             _hover: {
-              bg: props.colorMode === "light" ? "gray.100" : "blue.600",
+              bg: props.colorMode === "light" ? "gray.100" : "blue.700",
               transform: "scale(1.05)",
-              transition: "transform 0.4s",
               boxShadow: "2xl",
             },
           },

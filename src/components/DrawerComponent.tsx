@@ -30,21 +30,10 @@ const DrawerComponent: FC = () => {
         aria-label="Hamburger Menu"
         icon={<HamburgerIcon />}
         onClick={onOpen}
-        variant="ghost"
+        variant="HamburgerBtn"
         isRound
         ref={btnRef}
         size="xs"
-        mr={2}
-        sx={{
-          '&:hover': {
-            transform: 'scale(1.1)',
-            transition: 'transform 0.3s',
-          },
-          '&:active': {
-            transform: 'scale(1)',
-            transition: 'transform 0.2s',
-          },
-        }}
       />
       <Drawer
         finalFocusRef={btnRef}
@@ -57,29 +46,30 @@ const DrawerComponent: FC = () => {
         <DrawerContent>
           <DrawerCloseButton borderRadius="full" mt={2} />
           <DrawerHeader borderBottomWidth="1px">Menu</DrawerHeader>
-          <DrawerBody>
+          <DrawerBody p={0}>
             <VStack spacing={1} align="stretch">
-              {activePaths.map((path) => (
-                <React.Fragment key={path}>
-                  <Button
-                    as={Link}
-                    to={normalizePath(path)}
-                    variant="ghost"
-                    size="sm"
-                  >
-                    {path === "/"
-                      ? "Home"
-                      : path.charAt(1).toUpperCase() + path.slice(2)}
-                  </Button>
-                  <Divider
-                    visibility={
-                      isActivePath(location.pathname, path)
-                        ? "visible"
-                        : "hidden"
-                    }
-                  />
-                </React.Fragment>
-              ))}
+              {activePaths.map((path) => {
+                return (
+                  <React.Fragment key={path}>
+                    <Button
+                      as={Link}
+                      to={normalizePath(path)}
+                      variant="DrawerBtn"
+                      size="sm"
+                      style={isActivePath(location.pathname, path) ? { fontSize: 30, fontWeight: 600} : { color: "gray" }}
+                    >
+                      {path.charAt(1).toUpperCase() + path.slice(2)}
+                    </Button>
+                    <Divider
+                      visibility={
+                        isActivePath(location.pathname, path)
+                          ? "visible"
+                          : "hidden"
+                      }
+                    />
+                  </React.Fragment>
+                );
+              })}
             </VStack>
           </DrawerBody>
 

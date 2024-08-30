@@ -4,7 +4,6 @@ export const isActivePath = (currentPath: string, targetPath: string): boolean =
   normalizePath(currentPath) === normalizePath(targetPath);
 
 export const activePaths = [
-  "/",
   "/people",
   "/planets",
   "/films",

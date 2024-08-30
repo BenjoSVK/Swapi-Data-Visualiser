@@ -7,6 +7,7 @@ import {
   Stack,
   Button,
   Tooltip,
+  useColorMode,
 } from "@chakra-ui/react";
 import { FC } from "react";
 import ImageComponent from "./ImageComponent";
@@ -16,6 +17,7 @@ interface CardComponentProps {
   id: number;
 }
 const CardComponent: FC<CardComponentProps> = ({ nameOfPost, id }) => {
+  const { colorMode } = useColorMode();
   return (
     <Card variant="funky">
       <CardBody>
@@ -23,11 +25,22 @@ const CardComponent: FC<CardComponentProps> = ({ nameOfPost, id }) => {
         <CardHeader>
           <Stack>
             {nameOfPost === "Darth Vader" ? (
-              <Tooltip label="Join the dark side" aria-label="A am the only one who think Darth Vader is cool?" openDelay={500} placement="top">
+              colorMode === "light" ? (
+                <Tooltip
+                  label="Join the dark side"
+                  aria-label="A am the only one who think Darth Vader is cool?"
+                  openDelay={500}
+                  placement="top"
+                >
+                  <Heading size="sm">
+                    {nameOfPost.charAt(0).toUpperCase() + nameOfPost.slice(1)}
+                  </Heading>
+                </Tooltip>
+              ) : (
                 <Heading size="sm">
                   {nameOfPost.charAt(0).toUpperCase() + nameOfPost.slice(1)}
                 </Heading>
-              </Tooltip>
+              )
             ) : (
               <Heading size="sm">
                 {nameOfPost.charAt(0).toUpperCase() + nameOfPost.slice(1)}

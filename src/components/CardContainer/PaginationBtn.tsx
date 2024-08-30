@@ -1,4 +1,4 @@
-import { Button, ButtonGroup } from "@chakra-ui/react";
+import { Button, ButtonGroup, useColorMode } from "@chakra-ui/react";
 import { FC } from "react";
 
 interface PaginationBtnProps {
@@ -11,12 +11,13 @@ const PaginationBtn: FC<PaginationBtnProps> = ({
   SetPage,
   CurrentPage,
 }) => {
+  const { colorMode } = useColorMode()
   return (
     <ButtonGroup>
       {Pages.map((page, index) => (
         <Button
           onClick={() => SetPage(page)}
-          textDecoration={page === CurrentPage ? "underline" : "none"}
+          color={page === CurrentPage ? (colorMode === "light" ? "gray.700" : "gray.50") : (colorMode === "light" ? "gray.400" : "gray.500")}
           borderRadius="full"
           size="sm"
           key={index}
